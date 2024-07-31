@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My eCommerce Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .product .add-to-cart-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .product .out-of-stock {
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My eCommerce Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('landing_page') }}">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ url_for('cart') }}">Cart</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="products">
+                {% for product in products %}
+                <div class="product">
+                    <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+                    <h3>{{ product.name }}</h3>
+                    <p>${{ product.price }}</p>
+                    {% if product.quantity > 0 %}
+                    <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="add-to-cart-button">Add to Cart</a>
+                    {% else %}
+                    <button class="add-to-cart-button" disabled>Out of Stock</button>
+                    <p class="out-of-stock">Out of Stock</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 My eCommerce Store. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

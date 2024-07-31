@@ -1,0 +1,42 @@
+/* Add your custom styles here */
+
+/* Example styles for cart items */
+.cart-items ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-items li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-items img {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.cart-items h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.cart-items p {
+    margin: 0;
+    color: #333;
+}
+
+.cart-items button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cart-items button:hover {
+    background-color: #218838;
+}
